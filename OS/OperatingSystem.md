@@ -3003,11 +3003,238 @@ do {
 
 ## 4.3 进程同步(synchronization)
 
+进程同步是进程之间的**直接相互作用**，是合作进程之间**有意识**的行为, 这种相互作用**只发生在相关进程之间**。
+例如，司机-售票员问题
+
+<div align = left><img src="OperatingSystem_imgs/image-20240621143149844.png" alt="image-20240621143149844" style="zoom:40%;" /></div>
+
+
+
 ### 4.3.1 进程同步的概念
+
+**进程同步：**一组进程，为了协调其推进速度，在某些点处需要**相互等待**与**相互唤醒**，进程之间的这种相互制约关系称为进程同步。
+**注意：进程同步**仅发生于有逻辑关系的进程之间；**进程互斥**可能发生于任意两个进程之间。
+
+与进程同步相关的另一概念是**进程合作**。 
+**进程合作：**一组进程单独不能正常进行, 但并发可以正常进行的现象称为**进程合作**。
+参与合作的进程称为**合作进程**。
+进程同步是合作进程之间的**直接相互作用**。
 
 ### 4.3.2 进程同步机制
 
+**同步机制**：用于实现进程间同步的工具称作同步机制，亦称同步设施。
+**典型的同步机制：**
+
+1. **信号量与PV操作(semaphore and PV operations)**
+   **信号量又译信号灯*
+2. 管程(monitor)
+3. 条件临界区(conditional critical region)
+4. 路径表达式(path expression)
+5. 会合(rendezvous)(用于分布式系统）
+6. 事件(traditional UNIX)
+
+**同步机制应满足的基本要求:**
+
+1. 描述能力够用。即用此种同步机制应能描述操作系统及并发程序设计中所遇到的各种同步问题 
+   **例如，生产者消费者问题、读者写者问题、哲学家就餐问题；*
+2. 可以实现；
+3. 效率高；
+4. 使用方便。
+
 ### 4.3.3 信号量与PV操作
+
+迪杰斯特拉(荷兰, $E.W.Dijkstra$)于1965年提出。
+这种同步机制包括一种信号灯变量及对此种变量所能进行的操作：P操作和V操作。 
+
+#### 4.3.3.1 信号灯与PV操作的定义
+信号灯类型定义以及信号灯变量说明如下：
+
+``` c++
+typedef semaphore struct {
+	int value;
+	pointer_to_PCB queue;
+};				// 信号灯类型定义
+semaphore  s; 	// 信号灯变量
+```
+
+可见, 一个信号灯变量包括两部分：值部分`s.value`和指针部分`s.queue`。
+在任意时刻，`s.queue`可能指向空，也可能指向一个PCB队列的首部。初始时`s.queue`指向空。
+
+<div align = left><img src="OperatingSystem_imgs/image-20240621144417541.png" alt="image-20240621144417541" style="zoom:50%;" /></div>
+
+**P操作原语**的定义:
+``` c++
+void P(semaphore *s) {
+    s->value--;
+    if (s->value < 0)
+        asleep(s->queue);
+}
+```
+**V操作原语**的定义
+
+``` C++
+void V(semaphore *s) {
+    s->value++;
+    if (s->value <= 0)
+        wakeup(s->queue);
+}
+```
+
+1. `asleep(s->queue)`：将执行此操作的进程的PCB插入`s->queue`所指PCB队列的尾部，其状态由运行转为等待，系统转到处理机调度程序；
+2. `wakeup(s->queue)`：将队列`s->queue`头部进程的PCB由该队列中取出，并将其排入 就绪队列，其状态由等待转为就绪。
+
+**原语(primitive)**: 一段不可间断执行的程序称为原语。
+
+- P操作对应申请资源。
+- V操作对应释放资源 
+
+**使用信号灯变量的规定**：
+
+1. 必须置一次初值, 只能置一次初值, 且初值必需为非负整数；
+2. 只能执行P操作和V操作, 其它操作均非法。
+
+**关于信号灯变量的几个有用结论**：
+
+1. 当$s\rightarrow value<0$时，$|s\rightarrow value|$为$s\rightarrow queue$中等待进程的个数；
+2. 当$s\rightarrow value\geq 0$时，$s\rightarrow queue$为空；
+3. 当$s\rightarrow value$**初值为1**, 可用来实现**进程互斥**。
+   这只需在进入CS时执行一次P操作, 离开CS时执行一次V操作。
+4. 当$s\rightarrow value$**初值为0**, 可用来实现**进程同步**。
+   这只需在**后进行的动作前**执行一次P操作，**即P原语放在后执行动作之前。**
+   在**先进行的动作后**执行一次V操作，**即V原语放在先执行动作之后**。
+5. 当$s\rightarrow value$**初值为正整数**, 可用来**管理同种组合资源**。使用资源前执行一次P操作(申请),用完后执行一次V操作(归还)。 
+
+组合资源：若干相对**独立的资源**构成的资源集合, 其中每个相对独立的资源称为子资源。
+
+同种组合资源: **相同类型**子资源构成的组合资源.
+
+对**同种组合资源**进行管理时
+
+``` c++
+semaphore S=资源个数;  // 初值
+```
+
+#### 4.3.3.2 信号量与PV操作的应用
+
+例如，2台打印机：
+
+``` C++
+semaphore S=2;
+P(S);	// 申请
+...		// 使用
+V(S);	// 释放
+```
+
+**用信号灯变量实现进程互斥**
+
+<div align = left><img src="OperatingSystem_imgs/image-20240621150652805.png" alt="image-20240621150652805" style="zoom:50%;" /></div>
+
+    ```c++
+    semaphore  mutex = 1;
+    ```
+
+<div align = left><img src="OperatingSystem_imgs/image-20240621150801101.png" alt="image-20240621150801101" style="zoom:50%;" /></div>
+
+例：图书馆借阅系统
+
+``` C++
+#include <iostream>
+#include <thread>
+#include <semaphore.h>
+
+std::binary_semaphore mutex(1);  // 初始化为1的二元信号量
+int x = 10; // 书的数量
+
+void terminal1() {
+    while (true) {
+        std::this_thread::sleep_for(std::chrono::seconds(1)); // 模拟等待借书者
+        mutex.acquire(); // P(mutex)
+        if (x >= 1) {
+            x -= 1;
+            mutex.release(); // V(mutex)
+            std::cout << "Terminal 1 borrowed a book. Books left: " << x << std::endl;
+        } else {
+            mutex.release(); // V(mutex)
+            std::cout << "Terminal 1: No books available." << std::endl;
+        }
+    }
+}
+
+void terminal2() {
+    while (true) {
+        std::this_thread::sleep_for(std::chrono::seconds(1)); // 模拟等待借书者
+        mutex.acquire(); // P(mutex)
+        if (x >= 1) {
+            x -= 1;
+            mutex.release(); // V(mutex)
+            std::cout << "Terminal 2 borrowed a book. Books left: " << x << std::endl;
+        } else {
+            mutex.release(); // V(mutex)
+            std::cout << "Terminal 2: No books available." << std::endl;
+        }
+    }
+}
+
+int main() {
+    std::thread t1(terminal1);
+    std::thread t2(terminal2);
+
+    t1.join();
+    t2.join();
+
+    return 0;
+}
+
+```
+
+例：司机-售票员问题
+
+``` C++
+#include <iostream>
+#include <thread>
+#include <semaphore.h>
+
+std::binary_semaphore s1(0);  // 初始化为0的二元信号量
+std::binary_semaphore s2(0);  // 初始化为0的二元信号量
+
+void driver() {
+    while (true) {
+        s1.acquire(); // P(s1)
+        std::cout << "Driver: Start vehicle" << std::endl;
+        std::this_thread::sleep_for(std::chrono::seconds(2)); // 模拟正常行驶
+        std::cout << "Driver: Stop at station" << std::endl;
+        s2.release(); // V(s2)
+    }
+}
+
+void conductor() {
+    while (true) {
+        std::cout << "Conductor: Close the door" << std::endl;
+        s1.release(); // V(s1)
+        std::cout << "Conductor: Selling tickets" << std::endl;
+        std::this_thread::sleep_for(std::chrono::seconds(1)); // 模拟售票时间
+        s2.acquire(); // P(s2)
+        std::cout << "Conductor: Open the door" << std::endl;
+    }
+}
+
+int main() {
+    std::thread driverThread(driver);
+    std::thread conductorThread(conductor);
+
+    driverThread.join();
+    conductorThread.join();
+
+    return 0;
+}
+```
+
+说明：
+
+- **P操作**：使用`s1.acquire()`和`s2.acquire()`模拟P操作，即等待信号量。
+- **V操作**：使用`s1.release()`和`s2.release()`模拟V操作，即释放信号量。
+- **司机活动**：司机等待信号量`s1`，然后启动车辆，模拟正常行驶，停车后释放信号量`s2`。
+- **售票员活动**：售票员关车门，释放信号量`s1`，然后模拟售票时间，等待信号量`s2`，最后开车门。
 
 # 第五章 死锁与饥饿
 
