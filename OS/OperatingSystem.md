@@ -455,7 +455,7 @@ DMA是与通道相似的I/O方式，DMA控制器接受CPU的委托完成数据�
 
 ## 1.7 操作系统的运行机理
 
-<div align = left><img src="OperatingSystem_imgs/image-20240618152604061.png" alt="image-20240618152604061" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240618152604061.png" alt="image-20240618152604061" style="zoom:50%;" /></div>
 
 操作系统是**中断驱动**的，考虑系统中并发执行的两个程序P1和P2，假若时刻t1程序P1执行，时刻t2程序P2执行，t1<t2， 则在时刻(t1，t2)之间一定发生过中断，即**中断是程序切换的必要条件**。 
 
@@ -515,7 +515,7 @@ $吞吐量=\frac{作业道数}{全部处理时间}$
 
      如下图所示，t2时刻CPU启动了设备，t5时刻设备发出完成数据传输中断。若CPU的工作不需要等待数据传输完成，则可以提前安排在t2\~t5期间内做；若CPU进行的工作需等待I/O传输结果，在t5\~t6期间内做，则t2\~t5期间内CPU将空闲此时**应该并行提高效率**。
 
-<div align = left><img src="OperatingSystem_imgs/image-20240618094422820.png" alt="image-20240618094422820" style="zoom: 50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240618094422820.png" alt="image-20240618094422820" style="zoom: 50%;" /></div>
 
 ### 2.1.2 多道程序设计的提出
 
@@ -537,7 +537,7 @@ $吞吐量=\frac{作业道数}{全部处理时间}$
 
 如下图所示，t2时刻程序A放弃处理机，但程序B暂不具备运行条件，t3时刻程序B获得CPU并运行，t4时刻程序B启动I/O设备2，然后等待I/O传输完成。
 
-<div align = left><img src="OperatingSystem_imgs/image-20240618094853401.png" alt="image-20240618094853401" style="zoom: 50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240618094853401.png" alt="image-20240618094853401" style="zoom: 50%;" /></div>
 
 如果增加内存中程序的道数，处理机资源的利用率可进一步提高。理论上，当内存中程序的道数充分多时，处理机的利用率可达到100%。
 
@@ -637,7 +637,7 @@ $吞吐量=\frac{作业道数}{全部处理时间}$
 
 等待:arrow_right:就绪：得到所申请资源，I/O传输完成
 
-<div align = left><img src="OperatingSystem_imgs/image-20240618111957433.png" alt="image-20240618111957433" style="zoom:67%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240618111957433.png" alt="image-20240618111957433" style="zoom:67%;" /></div>
 
  进程状态转换由操作系统完成，对用户透明。
 
@@ -681,7 +681,7 @@ $吞吐量=\frac{作业道数}{全部处理时间}$
 11. **进程队列指针：**用于构建PCB队列，它是系统管理进程所需要的。
 
 
-<div align = left><img src="OperatingSystem_imgs/image-20240618112418139.png" alt="image-20240618112418139" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240618112418139.png" alt="image-20240618112418139" style="zoom:50%;" /></div>
 
 ### 2.2.4 进程的组成与上下文
 
@@ -707,7 +707,7 @@ $吞吐量=\frac{作业道数}{全部处理时间}$
 
  进程有两种表记方法，表记1将代码和数据看作一个整体，表记2强调代码部分的可共享性。
 
-<div align = left><img src="OperatingSystem_imgs/image-20240618113126371.png" alt="image-20240618113126371" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240618113126371.png" alt="image-20240618113126371" style="zoom:50%;" /></div>
 
 **注意：PCB属于操作系统空间，而程序属于用户空间。进程代码与数据也称为进程映像。**
 
@@ -723,7 +723,7 @@ $吞吐量=\frac{作业道数}{全部处理时间}$
 
 为实现对进程的管理，系统需按照某种策略将进程排成若干队列，由于PCB是进程的代表，因而，进程队列实际上是由进程PCB构成的队列。该队列也称PCB链，可单向，也可双向。单向链如图2-6所示：
 
-<div align = left><img src="OperatingSystem_imgs/image-20240618113855440.png" alt="image-20240618113855440" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240618113855440.png" alt="image-20240618113855440" style="zoom:50%;" /></div>
 
    注意，虽然用“队列”这一术语，PCB入队列和出队列不一定完全按FIFO的次序，这与系统对进程的管理策略有关。
 
@@ -803,7 +803,7 @@ $吞吐量=\frac{作业道数}{全部处理时间}$
 
 体现生灭过程的进程状态转换图如图所示：
 
-<div align = left><img src="OperatingSystem_imgs/image-20240618140408550.png" alt="image-20240618140408550" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240618140408550.png" alt="image-20240618140408550" style="zoom:50%;" /></div>
 
 **注意：进程的创建与结束属于OS中的系统调用，而其它状态转换条件对应OS核心中的内部函数。**
 
@@ -852,7 +852,7 @@ $吞吐量=\frac{作业道数}{全部处理时间}$
 
 一般认为，**进程是资源的分配单位，线程是CPU的调度单位**。线程是比进程更小的能独立运行的基本单位
 
-<div align = left><img src="OperatingSystem_imgs/image-20240618141118796.png" alt="image-20240618141118796" style="zoom:67%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240618141118796.png" alt="image-20240618141118796" style="zoom:67%;" /></div>
 
 #### 2.3.2.1 线程的属性
 
@@ -892,11 +892,11 @@ $吞吐量=\frac{作业道数}{全部处理时间}$
 
 多**进程**结构（用户视图）
 
-<div align = left><img src="OperatingSystem_imgs/image-20240618141609353.png" alt="image-20240618141609353" style="zoom:45%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240618141609353.png" alt="image-20240618141609353" style="zoom:45%;" /></div>
 
 如果两个进程具有一定逻辑联系，比如**二者是执行相同代码的服务程序**，则可用多线程结构实现，如图所示：
 
-<div align = left><img src="OperatingSystem_imgs/image-20240618141708044.png" alt="image-20240618141708044" style="zoom:45%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240618141708044.png" alt="image-20240618141708044" style="zoom:45%;" /></div>
 
 ### 2.3.4 线程控制块
 
@@ -932,7 +932,7 @@ OS支持的线程的TCB中还包含**系统栈指针**。
 
 下图是运行时系统用户级线程
 
-<div align = left><img src="OperatingSystem_imgs/image-20240618143356483.png" alt="image-20240618143356483" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240618143356483.png" alt="image-20240618143356483" style="zoom:50%;" /></div>
 
 用户级别线程的优点：
 
@@ -962,7 +962,7 @@ OS支持的线程的TCB中还包含**系统栈指针**。
 
 核心级别线程示意图如下：
 
-<div align = left><img src="OperatingSystem_imgs/image-20240618144112104.png" alt="image-20240618144112104" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240618144112104.png" alt="image-20240618144112104" style="zoom:50%;" /></div>
 
 以下是用户级线程和系统级线程的差异表格：
 
@@ -987,7 +987,7 @@ Solaris中的进程被称为任务(task)。一个任务中至少包含一个轻�
 
 Solaris中的线程与轻进程之间的关系：
 
-<div align = left><img src="OperatingSystem_imgs/image-20240618150549921.png" alt="image-20240618150549921" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240618150549921.png" alt="image-20240618150549921" style="zoom:50%;" /></div>
 
 用户可通过**运行库**动态确定用户级线程与LWP之间的联系，而只有与LWP相联系的线程才与核心级线程相对应并通过调度获得处理机运行，因而用户可显式调度同一任务中的多个线程。
 
@@ -1112,7 +1112,7 @@ PSW和PC由中断装置硬件保存，在此时保存！
 
 **其它现场信息**在中断响应后由**中断处理程序根据需要保存**，也就是说，**中断装置只保存了最基本的现场信息**。
 
-<div align = left><img src="OperatingSystem_imgs/image-20240618171828326.png" alt="image-20240618171828326" style="zoom:67%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240618171828326.png" alt="image-20240618171828326" style="zoom:67%;" /></div>
 
 中断响应的工作由计算机系统的硬件和软件共同协作完成。它的核心内容是**交换新旧PSW**。
 即当发生中断时，系统保存当前运行PSW，引出中断处理程序的PSW，并根据“旧PSW”中保存的中断码来分析发生的具体中断事件（原因），转相应中断处理程序进行处理。
@@ -1127,7 +1127,7 @@ PSW和PC由中断装置硬件保存，在此时保存！
 
 **完整的中断响应和处理的过程**：
 
-<div align = left><img src="OperatingSystem_imgs/image-20240618172055217.png" alt="image-20240618172055217" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240618172055217.png" alt="image-20240618172055217" style="zoom:50%;" /></div>
 
 **前面是中断响应的过程。下面是中断处理程序的过程**   
 
@@ -1164,7 +1164,7 @@ PSW和PC由中断装置硬件保存，在此时保存！
 
      强迫性中断与中断装置之间的关系如图所示：
 
-     <div align = left><img src="OperatingSystem_imgs/image-20240618172550733.png" alt="image-20240618172550733" style="zoom:50%;" /></div>
+     <div align = left><img src="./OperatingSystem.assets//image-20240618172550733.png" alt="image-20240618172550733" style="zoom:50%;" /></div>
 
   2. **自愿性中断**
      自愿性中断是正在运行程序有意识安排的，它们通常由于正运行程序执行访管指令访管指令是一条可以在目态下执行的指令，用户程序中凡是要调用操作系统功能时就安排一条访管指令。即‘系统调用’而引起，目的是要求系统为其提供某种服务。
@@ -1172,7 +1172,7 @@ PSW和PC由中断装置硬件保存，在此时保存！
 
      自愿性中断与中断装置之间的关系如图所示：
 
-     <div align = left><img src="OperatingSystem_imgs/image-20240618172713983.png" alt="image-20240618172713983" style="zoom:50%;" /></div>
+     <div align = left><img src="./OperatingSystem.assets//image-20240618172713983.png" alt="image-20240618172713983" style="zoom:50%;" /></div>
 
 #### 3.1.2.2 中断向量
 
@@ -1185,9 +1185,9 @@ PSW和PC由中断装置硬件保存，在此时保存！
 
 中断向量与中断处理程序的存储方法如下：
 
-<div align = left><img src="OperatingSystem_imgs/image-20240618191619808.png" alt="image-20240618191619808" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240618191619808.png" alt="image-20240618191619808" style="zoom:50%;" /></div>
 
-<div align = left><img src="OperatingSystem_imgs/image-20240618191703285.png" alt="image-20240618191703285" style="zoom:67%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240618191703285.png" alt="image-20240618191703285" style="zoom:67%;" /></div>
 
 注意：
 
@@ -1239,7 +1239,7 @@ PSW和PC由中断装置硬件保存，在此时保存！
 
 如下图所示：  
 
-<div align = left><img src="OperatingSystem_imgs/image-20240618192601065.png" alt="image-20240618192601065" style="zoom:40%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240618192601065.png" alt="image-20240618192601065" style="zoom:40%;" /></div>
 
 上图所示的中断处理过程中：
 
@@ -1329,7 +1329,7 @@ PSW和PC由中断装置硬件保存，在此时保存！
 
 中断嵌套的一般情形如图所示：
 
-<div align = left><img src="OperatingSystem_imgs/image-20240618191918070.png" alt="image-20240618191918070" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240618191918070.png" alt="image-20240618191918070" style="zoom:50%;" /></div>
 
 中断响应时需保存被中断程序的现场；中断返回时需恢复被中断程序的现场。
 
@@ -1343,7 +1343,7 @@ PSW和PC由中断装置硬件保存，在此时保存！
 
 系统栈区的内容如图所示：
 
-<div align = left><img src="OperatingSystem_imgs/image-20240618192056201.png" alt="image-20240618192056201" style="zoom:50%;" /></div> 
+<div align = left><img src="./OperatingSystem.assets//image-20240618192056201.png" alt="image-20240618192056201" style="zoom:50%;" /></div> 
 
 说明：
 
@@ -1353,7 +1353,7 @@ PSW和PC由中断装置硬件保存，在此时保存！
 
 ### 3.1.6 进程状态转换的分解图
 
-<div align = left><img src="OperatingSystem_imgs/20190805202426290.png" alt="20190805202426290" style="zoom:57%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//20190805202426290.png" alt="20190805202426290" style="zoom:57%;" /></div>
 
 **创建**：当一个新程序被创建时，系统为其分配必要的资源（如内存、I/O设备等），但尚未将其加入到就绪队列中。此状态表明程序还未准备好接受调度。
 
@@ -1498,7 +1498,7 @@ I/O中断一般由**通道**发出，通常分两种情况:
 
    编译时，**生成**中断续元入口表：
 
-   <div align = left><img src="OperatingSystem_imgs/image-20240618200432212.png" alt="image-20240618200432212" style="zoom:50%;" /></div>
+   <div align = left><img src="./OperatingSystem.assets//image-20240618200432212.png" alt="image-20240618200432212" style="zoom:50%;" /></div>
 
    运行时，执行调试语句，**填写**中断续元表。**用调试语句填表**
 
@@ -1574,7 +1574,7 @@ I/O中断一般由**通道**发出，通常分两种情况:
 访管指令的执行将引起自愿性中断， 由**中断向量**引导进入**系统调用总控程序**。
 该程序由旧的PSW中取出中断码*n*，根据*n*的值查**系统调用驱动表**，转到访管指令对应的服务程序。
 
-<div align = left><img src="OperatingSystem_imgs/image-20240618201442578.png" alt="image-20240618201442578" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240618201442578.png" alt="image-20240618201442578" style="zoom:50%;" /></div>
 
 ## 3.2 处理器调度
 
@@ -1685,18 +1685,18 @@ FCFS算法的基本思想：
 按照进程申请CPU的次序(即进程进入就绪状态的次序)进行调度。
 例如：
 
-<div align = left><img src="OperatingSystem_imgs/image-20240619103524589.png" alt="image-20240619103524589" style="zoom:30%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240619103524589.png" alt="image-20240619103524589" style="zoom:30%;" /></div>
 
 若进程到达次序为P1， P2， P3，则Gantt图如下：**进程进度图*
 
-<div align=left><img src="OperatingSystem_imgs/image-20240619103639386.png" alt="image-20240619103639386" style="zoom:40%;" /></div
+<div align=left><img src="./OperatingSystem.assets//image-20240619103639386.png" alt="image-20240619103639386" style="zoom:40%;" /></div
 
 
 平均等待时间=(0+27+30)/3=19 (ms)
 
 若进程到达次序为P2， P3， P1，则Gantt图如下：
 
-<div align = left><img src="OperatingSystem_imgs/image-20240619103949430.png" alt="image-20240619103949430" style="zoom:40%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240619103949430.png" alt="image-20240619103949430" style="zoom:40%;" /></div>
 
 平均等待时间 = (0+3+8) / 3 = 3.67 (ms)
 
@@ -1714,11 +1714,11 @@ SJF算法的基本思想：
 
 例如，
 
-<div align = left><img src="OperatingSystem_imgs/image-20240619104146136.png" alt="image-20240619104146136" style="zoom:30%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240619104146136.png" alt="image-20240619104146136" style="zoom:30%;" /></div>
 
 Gant chart:
 
-<div align = left><img src="OperatingSystem_imgs/image-20240619104222023.png" alt="image-20240619104222023" style="zoom:40%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240619104222023.png" alt="image-20240619104222023" style="zoom:40%;" /></div>
 
 平均等待时间为: $(0+3+8+15)/4=6.5(ms)$
 
@@ -1886,7 +1886,7 @@ SRTN算法为**剥夺式**调度算法:
 中断返回逐层进行，仅当返回到最外层时，才退回到目态。
 如图所示：
 
-<div align = left><img src="OperatingSystem_imgs/image-20240619151039786.png" alt="image-20240619151039786" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240619151039786.png" alt="image-20240619151039786" style="zoom:50%;" /></div>
 
 中断是否一定会导致进程切换呢? 
 
@@ -1966,7 +1966,7 @@ SRTN算法为**剥夺式**调度算法:
 
 高级调度，也叫作业调度。
 
-<div align = left><img src="OperatingSystem_imgs/image-20240619170016858.png" alt="image-20240619170016858" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240619170016858.png" alt="image-20240619170016858" style="zoom:50%;" /></div>
 
 ### 3.3.1 交换与中级调度
 
@@ -1988,7 +1988,7 @@ SRTN算法为**剥夺式**调度算法:
 
 具有中级调度的进程状态转换关系如图所示：
 
-<div align = left><img src="OperatingSystem_imgs/image-20240619170316397.png" alt="image-20240619170316397" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240619170316397.png" alt="image-20240619170316397" style="zoom:50%;" /></div>
 
 ### 3.3.2 作业与高级调度
 
@@ -2015,7 +2015,7 @@ SRTN算法为**剥夺式**调度算法:
 
 **作业状态之间的转换关系如图所示**：
 
-<div align = left><img src="OperatingSystem_imgs/image-20240619170601971.png" alt="image-20240619170601971" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240619170601971.png" alt="image-20240619170601971" style="zoom:50%;" /></div>
 
 作业调度使作业以进程的形式进入内存，并获得运行资格。
 但真正获得CPU运行还需经过进程调度或线程调度。
@@ -2081,7 +2081,7 @@ $$
 
  **例2** 两个周期性实时任务如下表所示：
 
-<div align = left><img src="OperatingSystem_imgs/image-20240620095059440.png" alt="image-20240620095059440" style="zoom:40%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240620095059440.png" alt="image-20240620095059440" style="zoom:40%;" /></div>
 
 试分析这两个周期性实时任务是否可调度。
 $$
@@ -2098,7 +2098,7 @@ $$
 - **剥夺式调度**灵活，在满足调度约束条件的前提下可充分发挥处理机利用率，但实现略复杂；
 - **非剥夺式调度**实现简单，但为满足约束条件处理机往往不能满负荷运行。
 
-<div align =left><img src="OperatingSystem_imgs/image-20240620095429741.png" alt="image-20240620095429741" style="zoom:50%;" /></div>
+<div align =left><img src="./OperatingSystem.assets//image-20240620095429741.png" alt="image-20240620095429741" style="zoom:50%;" /></div>
 
 ### 3.4.1 最早截止期优先调度(Earliest Deadline First)
 
@@ -2111,11 +2111,11 @@ $$
 \sum_{i=1}^{n}\frac{C_i}{T_i}\leq 1
 $$
 
-<div align =left>  <img src="OperatingSystem_imgs/image-20240620095906005.png" alt="image-20240620095906005" style="zoom:67%;" /></div>
+<div align =left>  <img src="./OperatingSystem.assets//image-20240620095906005.png" alt="image-20240620095906005" style="zoom:67%;" /></div>
 
 按最早截止期优先、可抢占原则调度的结果如下：
 
-<div align =left><img src="OperatingSystem_imgs/image-20240620095956333.png" alt="image-20240620095956333" style="zoom:50%;" /></div>
+<div align =left><img src="./OperatingSystem.assets//image-20240620095956333.png" alt="image-20240620095956333" style="zoom:50%;" /></div>
 
 ### 3.4.2 单调速率调度(Rate Monotonic Scheduling)
 
@@ -2138,7 +2138,7 @@ $$
 $$
 例如，三个**周期性**实时任务如表所示：
 
-<div align = left><img src="OperatingSystem_imgs/image-20240620101739155.png" alt="image-20240620101739155" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240620101739155.png" alt="image-20240620101739155" style="zoom:50%;" /></div>
 
 $$
 \begin{align*}
@@ -2151,7 +2151,7 @@ $$
 
 故可调度。具体调度结果如下：
 
-<div align = left><img src="OperatingSystem_imgs/image-20240620102115484.png" alt="image-20240620102115484" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240620102115484.png" alt="image-20240620102115484" style="zoom:50%;" /></div>
 
 以下是RMS调度算法与EDF调度算法的比较生成的表格：
 
@@ -2188,7 +2188,7 @@ $松弛度 = 完成时间-处理时间-当前时间$
 任务A要求每 20 ms执行一次，执行时间为 10 ms；
 任务B要求每 50 ms执行一次，执行时间为 25 ms。
 
-<div align = left><img src="OperatingSystem_imgs/image-20240620103811598.png" alt="image-20240620103811598" style="zoom:67%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240620103811598.png" alt="image-20240620103811598" style="zoom:67%;" /></div>
 
 1. 在刚开始时(t1=0)，A1必须在20ms时完成，而它本身运行又需 10 ms，可算出A1的松弛度为10ms；
    B1必须在50ms时完成， 而它本身运行就需25 ms，可算出B1的松弛度为25 ms，故调度程序应先调度A1执行。
@@ -2199,8 +2199,8 @@ $松弛度 = 完成时间-处理时间-当前时间$
    故调度程序应选择B1运行。
 
 <div align = left>
-    <img src="OperatingSystem_imgs/image-20240620103931702.png" alt="image-20240620103931702" style="zoom:67%;" />
-    <img src="OperatingSystem_imgs/image-20240620104036484.png" alt="image-20240620104036484" style="zoom:50%;" />
+    <img src="./OperatingSystem.assets//image-20240620103931702.png" alt="image-20240620103931702" style="zoom:67%;" />
+    <img src="./OperatingSystem.assets//image-20240620104036484.png" alt="image-20240620104036484" style="zoom:50%;" />
 </div>
 
 ## 3.5 多处理机调度
@@ -2230,7 +2230,7 @@ $松弛度 = 完成时间-处理时间-当前时间$
 
 自调度必须基于专门的**互斥**机制，以保证多个处理机**不同时访问**系统中唯一的就绪队列。
 
-<div align = left><img src="OperatingSystem_imgs/image-20240620105002776.png" alt="image-20240620105002776" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240620105002776.png" alt="image-20240620105002776" style="zoom:50%;" /></div>
 
 **自调度算法的优点**：
 
@@ -2278,7 +2278,7 @@ $（P_i，P_j）∈→$可记作$P_i→P_j$, 称$P_i$是$P_j$的前驱，$P_j$�
 
 $P_1→P_2,P_1→P_3,P_1→P_4,P_2→P_5,P_3→P_5,P_4→P_5,P_4→P_6,P_5→P_7,P_6→P_7$
 
-<div align = left><img src="OperatingSystem_imgs/image-20240620162551085.png" alt="image-20240620162551085" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240620162551085.png" alt="image-20240620162551085" style="zoom:50%;" /></div>
 
 ### 4.1.2 顺序程序及其特性
 
@@ -2309,10 +2309,10 @@ $P_1→P_2,P_1→P_3,P_1→P_4,P_2→P_5,P_3→P_5,P_4→P_5,P_4→P_6,P_5→P_7
    S4：d:=c+6；\\
    S5：e:=c-d；$
 
-   <div align = left><img src="OperatingSystem_imgs/image-20240620161912751.png" alt="image-20240620161912751" style="zoom:50%;" /></div>
+   <div align = left><img src="./OperatingSystem.assets//image-20240620161912751.png" alt="image-20240620161912751" style="zoom:50%;" /></div>
 
 2. 外部并发性: 指多个程序之间的并发性。
-   <div align = left><img src="OperatingSystem_imgs/image-20240620162003767.png" alt="image-20240620162003767" style="zoom:50%;" /></div>
+   <div align = left><img src="./OperatingSystem.assets//image-20240620162003767.png" alt="image-20240620162003767" style="zoom:50%;" /></div>
 
 ### 4.1.3 并发进程及其特性
 
@@ -2340,7 +2340,7 @@ $$
 
 假设$Counter$的当前值是5，正确的结果应该是5。
 
-<div align = left><img src="OperatingSystem_imgs/image-20240620162417984.png" alt="image-20240620162417984" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240620162417984.png" alt="image-20240620162417984" style="zoom:50%;" /></div>
 
 不可再现性的例子
 $$
@@ -2398,7 +2398,7 @@ $S_3$和$S_4$不能并发执行，因为$W(S_3)∩R(S_4)=\{c\}$。
 
 例如 图书借阅系统 (设$x$:某种书册数，当前$x=1$)
 
-<div align = left><img src="OperatingSystem_imgs/image-20240620173059550.png" alt="image-20240620173059550" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240620173059550.png" alt="image-20240620173059550" style="zoom:50%;" /></div>
 
 若一种错误的发生与进程的推进速度有关，则称这种错误为**与时间有关的错误**。
 
@@ -2429,7 +2429,7 @@ $S_3$和$S_4$不能并发执行，因为$W(S_3)∩R(S_4)=\{c\}$。
      也称为临界段(critical section， critical region)
 
      共享变量与临界区的关系： 
-     <div align = left><img src="OperatingSystem_imgs/image-20240620192756001.png" alt="image-20240620192756001" style="zoom:50%;" /></div>
+     <div align = left><img src="./OperatingSystem.assets//image-20240620192756001.png" alt="image-20240620192756001" style="zoom:50%;" /></div>
 
 2. **共享变量与临界区的表示**
 
@@ -3006,7 +3006,7 @@ do {
 进程同步是进程之间的**直接相互作用**，是合作进程之间**有意识**的行为, 这种相互作用**只发生在相关进程之间**。
 例如，司机-售票员问题
 
-<div align = left><img src="OperatingSystem_imgs/image-20240621143149844.png" alt="image-20240621143149844" style="zoom:40%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240621143149844.png" alt="image-20240621143149844" style="zoom:40%;" /></div>
 
 
 
@@ -3060,7 +3060,7 @@ semaphore  s; 	// 信号灯变量
 可见, 一个信号灯变量包括两部分：值部分`s.value`和指针部分`s.queue`。
 在任意时刻，`s.queue`可能指向空，也可能指向一个PCB队列的首部。初始时`s.queue`指向空。
 
-<div align = left><img src="OperatingSystem_imgs/image-20240621144417541.png" alt="image-20240621144417541" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240621144417541.png" alt="image-20240621144417541" style="zoom:50%;" /></div>
 
 **P操作原语**的定义:
 ``` c++
@@ -3127,13 +3127,13 @@ V(S);	// 释放
 
 **用信号灯变量实现进程互斥**
 
-<div align = left><img src="OperatingSystem_imgs/image-20240621150652805.png" alt="image-20240621150652805" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240621150652805.png" alt="image-20240621150652805" style="zoom:50%;" /></div>
 
 ```C++
 semaphore  mutex = 1;
 ```
 
-<div align = left><img src="OperatingSystem_imgs/image-20240621150801101.png" alt="image-20240621150801101" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240621150801101.png" alt="image-20240621150801101" style="zoom:50%;" /></div>
 
 例：图书馆借阅系统
 
@@ -3365,7 +3365,7 @@ E=\{&(r1,p2),(r2,p2),(r2,p1),(r3,p3),\\
 $$
 资源分配图如下：
 
-<div align = left><img src="OperatingSystem_imgs/image-20240624195509131.png" alt="image-20240624195509131" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240624195509131.png" alt="image-20240624195509131" style="zoom:50%;" /></div>
 
 $p_1$占有$r_2$中的一个实例，申请$r_1$中的一个实例；
 $p_2$占有$r_1$和$r_2$中各一个实例，申请$r_3$中的一个实例；
@@ -3378,13 +3378,13 @@ $p_3$占有$r_3$和$r_4$中各一个实例。
 $p_1\rightarrow r_1\rightarrow p_2\rightarrow r_3\rightarrow p_3\rightarrow r_2\rightarrow p_1\\
 p_2\rightarrow r_3\rightarrow p_3\rightarrow r_2\rightarrow p_2$
 
-<div align = left><img src="OperatingSystem_imgs/image-20240624200144885.png" alt="image-20240624200144885" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240624200144885.png" alt="image-20240624200144885" style="zoom:50%;" /></div>
 
 **有环路, 有死锁**, 且$p_1, p_2, p_3$都参与了死锁。
 
 图中有一个环路，但无死锁：
 
-<div align = left><img src="OperatingSystem_imgs/image-20240624200414525.png" alt="image-20240624200414525" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240624200414525.png" alt="image-20240624200414525" style="zoom:50%;" /></div>
 
 图中$p_2$可能会释放$r_1$中的一个资源, 该资源可分配给$p_3$, 环路断开。
 
@@ -3483,13 +3483,13 @@ $$
 
 若某一时刻系统中不存在这样一个安全序列，则称此时的系统状态为**不安全状态**。
 
-<div align = left><img src="OperatingSystem_imgs/image-20240625092537891.png" alt="image-20240625092537891" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240625092537891.png" alt="image-20240625092537891" style="zoom:50%;" /></div>
 
 系统处于安全状态：存在安全进程序列$<p_1,p_2,\ldots,p_n>$
 
 进程序列$<p_1,p_2,\ldots,p_n>$安全，$p_1,p_2,\ldots,p_n$可依次进行完。
 
-<div align = left><img src="OperatingSystem_imgs/image-20240625092741021.png" alt="image-20240625092741021" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240625092741021.png" alt="image-20240625092741021" style="zoom:50%;" /></div>
 
 假定系统中有三个进程$P_1,P_2,P_3$，共有12台磁带机，$T_0$时刻，三个进程对磁带机的需求和占有情况如下表所示：
 
@@ -3534,11 +3534,11 @@ Finish: array[1..n]of boolean; 	// 表示进程是否完成
 
 **资源预/试分配:**
 
-<div align = left><img src="OperatingSystem_imgs/image-20240625093937881.png" alt="image-20240625093937881" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240625093937881.png" alt="image-20240625093937881" style="zoom:50%;" /></div>
 
 **安全性检测算法**
 
-<div align = left><img src="OperatingSystem_imgs/image-20240625094038502.png" alt="image-20240625094038502" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240625094038502.png" alt="image-20240625094038502" style="zoom:50%;" /></div>
 
 **主要概念：**
 
@@ -3622,7 +3622,7 @@ Finish: array[1..n]of boolean; // 表示进程是否完成，布尔型
 死锁是指一组进程互相等待彼此释放资源而无法继续执行的状态。
 死锁检测算法主要应用于系统中资源分配和释放的管理。
 
-<div align = left><img src="OperatingSystem_imgs/image-20240625101932023.png" alt="image-20240625101932023" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240625101932023.png" alt="image-20240625101932023" style="zoom:50%;" /></div>
 
 1.  上述算法可以检测到参与死锁的全部进程，包括占有资源和不占有资源的进程。
 2. 如果希望只检测占有资源的进程，初始化时：$Finish[i]=true, for\ Allocation[i]=0$
@@ -3869,7 +3869,7 @@ $$
 - 不能正常完成地址映射时产生中断；
 - 需软硬件相结合来完成。
 
-<div align = left><img src="OperatingSystem_imgs/image-20240625142809055.png" alt="image-20240625142809055" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240625142809055.png" alt="image-20240625142809055" style="zoom:50%;" /></div>
 
 1. 内存空间（或物理空间）
    内存是由若干个存储单元组成的，内阁存储单元有一个编号，这种编号可唯一表示一个存储单元，称为**内存地址**（或**物理地址**）
@@ -3881,7 +3881,7 @@ $$
 
 下图为一个作业在编译前、编译后及装入内存后不同空间的情形。
 
-<div align = left><img src="OperatingSystem_imgs/image-20240625143520439.png" alt="image-20240625143520439" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240625143520439.png" alt="image-20240625143520439" style="zoom:50%;" /></div>
 
 [SI] 表示寄存器间接寻址
 
@@ -3894,7 +3894,7 @@ $$
 
 由于用户的逻辑地址空间都是从0开始的，而当该程序装入**内存运行**时又不是从0开始，因此就需要将逻辑地址转换成实际的内存地址。
 
-<div align = left><img src="OperatingSystem_imgs/image-20240625144055758.png" alt="image-20240625144055758" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240625144055758.png" alt="image-20240625144055758" style="zoom:50%;" /></div>
 
 装入方式三种
 
@@ -3933,7 +3933,7 @@ $$
   1. 不便于对目标模块的修改和更新
   2. 无法实现对目标模块的共享
 
-  <div align = left><img src="OperatingSystem_imgs/image-20240625144927087.png" alt="image-20240625144927087" style="zoom:50%;" /></div>
+  <div align = left><img src="./OperatingSystem.assets//image-20240625144927087.png" alt="image-20240625144927087" style="zoom:50%;" /></div>
 
 - 动态链接
   在**装入**或**运行时**进行链接。
@@ -3998,7 +3998,7 @@ $$
 - **位示图**（bit map）
   用一个bit代表一页状态，0表空闲，1表占用。（ 多单元）
 
-  <div align = left><img src="OperatingSystem_imgs/image-20240625150852175.png" alt="image-20240625150852175" style="zoom:50%;" /></div>
+  <div align = left><img src="./OperatingSystem.assets//image-20240625150852175.png" alt="image-20240625150852175" style="zoom:50%;" /></div>
 
   n个页面（0—n-1）为记录所有页面状态，需要一个表，形式如上图，即**位示图**
 
@@ -4011,8 +4011,8 @@ $$
   
 
   <div align = left>
-  <img src="OperatingSystem_imgs/image-20240625151246101.png" alt="image-20240625151246101" style="zoom:50%;" />
-  <img src="OperatingSystem_imgs/image-20240625151214023.png" alt="image-20240625151214023" style="zoom:50%;" />
+  <img src="./OperatingSystem.assets//image-20240625151246101.png" alt="image-20240625151246101" style="zoom:50%;" />
+  <img src="./OperatingSystem.assets//image-20240625151214023.png" alt="image-20240625151214023" style="zoom:50%;" />
   </div>
   特点：可以分配连续页面。
   
@@ -4020,7 +4020,7 @@ $$
   所有的空闲页面连成一个链。
   **分配时**，取链头的页面；
   **回收时**，将被释放的页面连入链头。
-  <div align = left><img src="OperatingSystem_imgs/image-20240625151418102.png" alt="image-20240625151418102" style="zoom:50%;" /></div>
+  <div align = left><img src="./OperatingSystem.assets//image-20240625151418102.png" alt="image-20240625151418102" style="zoom:50%;" /></div>
 
   优点：节省空间。（不适合管理外存）
 
@@ -4032,7 +4032,7 @@ $$
 
 **数据结构：**需要一张**空闲区域表**，来管理当前的空闲区域。如下表
 
-<div align = left><img src="OperatingSystem_imgs/image-20240625151802718.png" alt="image-20240625151802718" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240625151802718.png" alt="image-20240625151802718" style="zoom:50%;" /></div>
 
 **三个分配算法：**
 
@@ -4049,7 +4049,7 @@ $$
    - 由于低地址部分不断被划分,致使低地址端留下许多难以利用的很小的空闲分区(碎片或零头),
    - 每次查找均从低地址部分开始, 增加了查找可用空闲分区的开销
 
-   <div align = left><img src="OperatingSystem_imgs/image-20240625152227470.png" alt="image-20240625152227470" style="zoom:50%;" /></div>
+   <div align = left><img src="./OperatingSystem.assets//image-20240625152227470.png" alt="image-20240625152227470" style="zoom:50%;" /></div>
 
    **空闲区**：首址递增排列；
    **申请**：取第一个可满足区域；
@@ -4082,7 +4082,7 @@ $$
    - 若不存在与作业大小一致的空闲分区，则只划分比作业稍大的空闲分区，从而保留了大的空闲分区
    - 但空闲区一般不可能正好和它申请的内存空间大小一样,因而将其分割成两部分时,往往使剩下的空闲区非常小,从而在存储器中留下许多难以利用的小空闲区（碎片或零头）。
 
-   <div align = left><img src="OperatingSystem_imgs/image-20240625152804847.png" alt="image-20240625152804847" style="zoom:50%;" /></div>
+   <div align = left><img src="./OperatingSystem.assets//image-20240625152804847.png" alt="image-20240625152804847" style="zoom:50%;" /></div>
 
    **空闲区**：递增排列；
    **申请**：取最小可满足区域；
@@ -4090,7 +4090,7 @@ $$
    **缺点**：可能形成碎片 (fragment)。$Eg.$ 申请30将留下长度为2的空闲区。        
 
 3. **最坏适应(Worst Fit)**
-   <div align = left><img src="OperatingSystem_imgs/image-20240625153036705.png" alt="image-20240625153036705" style="zoom:50%;" /></div>
+   <div align = left><img src="./OperatingSystem.assets//image-20240625153036705.png" alt="image-20240625153036705" style="zoom:50%;" /></div>
 
    **空闲区**：长度递减排列；
    **申请**：取最大可满足区域；
@@ -4117,7 +4117,7 @@ $$
 **紧凑/拼凑**：**移动**占用区域，使所有空闲区域连成一片（开销很大）。
 如下，P1,P2是两个程序占用区域
 
-<div align = left><img src="OperatingSystem_imgs/image-20240625153652939.png" alt="image-20240625153652939" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240625153652939.png" alt="image-20240625153652939" style="zoom:50%;" /></div>
 
 ## 6.3 单一连续区存储管理
 
@@ -4134,7 +4134,7 @@ $$
 2. **进程空间划分**：**一个进程一个区域**，逻辑地址$0\sim l-1$
 
 3. **进程空间与内存空间对应关系**：可以浮动
-   <div align = left><img src="OperatingSystem_imgs/image-20240625154408536.png" alt="image-20240625154408536" style="zoom:50%;" /></div>
+   <div align = left><img src="./OperatingSystem.assets//image-20240625154408536.png" alt="image-20240625154408536" style="zoom:50%;" /></div>
 
 4. 所需表目：
 
@@ -4156,7 +4156,7 @@ $$
 
    其中$a$为逻辑地址，$b$为进程起始（**首**）地址. 当$a$所对应的物理地址**不存在**时(**越界**)，映射没有意义，结果为$\Omega$. 
 
-<div align = left><img src="OperatingSystem_imgs/image-20240625155102240.png" alt="image-20240625155102240" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240625155102240.png" alt="image-20240625155102240" style="zoom:50%;" /></div>
 
 步骤：
 
@@ -4182,7 +4182,9 @@ $$
 
 **注意：**采用交换技术，一个进程可在内外存之间交换，**交换的基本单位**是**整个进程**，因而仍然不能运行比内存大的程序.
 
-**补充：**交换以整个进程为单位，称为**整体交换或进程交换**；如果是以部分进程进行对换，如以页或段为单位进行，则成为**页面对换**或**分段交换**，或**部分对换**，这种对换是后面的虚拟内存的虚拟页式管理和虚拟段式管理的基础。
+**补充：**交换以整个进程为单位，称为**整体交换或进程交换**；
+如果是以部分进程进行对换，如以页或段为单位进行，则成为**页面对换**或**分段交换**，或**部分对换**，
+这种对换是后面的虚拟内存的虚拟页式管理和虚拟段式管理的基础。
 
 **注意：**这里我们说的是**进程交换**。
 
@@ -4199,7 +4201,7 @@ $$
 
 **作用：**是将较大程序装入较小进程空间一种的技术。
 
-<div align = left><img src="OperatingSystem_imgs/image-20240625160054711.png" alt="image-20240625160054711" style="zoom:80%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240625160054711.png" alt="image-20240625160054711" style="zoom:80%;" /></div>
 
 
 
@@ -4233,21 +4235,23 @@ $$
 
 1. **内存空间（物理空间）划分**：静态等长划分，$2^i$, 称为一个页架(page frame)。
 
-   <div align = left><img src="OperatingSystem_imgs/image-20240625160737297.png" alt="image-20240625160737297" style="zoom:50%;" /></div>
+   <div align = left><img src="./OperatingSystem.assets//image-20240625160737297.png" alt="image-20240625160737297" style="zoom:50%;" /></div>
 
 2. **进程空间划分**：静态等长划分，$2^i$, 称为一个页面。
-   <div align = left><img src="OperatingSystem_imgs/image-20240625160858511.png" alt="image-20240625160858511" style="zoom:50%;" /></div>
-
+   
+   <div align = left><img src="./OperatingSystem.assets//image-20240625160858511.png" alt="image-20240625160858511" style="zoom:50%;" /></div>
+   
 3. **进程空间与内存空间对应关系**:
    进程运行时，将进程逻辑页面保存在存储空间的物理页框中，即确定逻辑页面与物理页框的对应关系。
    **进程的逻辑页面是连续的，但其所对应的物理页框不一定连续**
-   <div align = left><img src="OperatingSystem_imgs/image-20240625161024687.png" alt="image-20240625161024687" style="zoom:50%;" /></div>
-
+   
+   <div align = left><img src="./OperatingSystem.assets//image-20240625161024687.png" alt="image-20240625161024687" style="zoom:50%;" /></div>
+   
 4. **所需表目**：
    为实现逻辑地址到物理地址的转换，需要两个表：
 
    - 页表，**每个进程**一个，存放于内存
-     <div align = left><img src="OperatingSystem_imgs/image-20240625161145010.png" alt="image-20240625161145010" style="zoom:50%;" /></div>
+     <div align = left><img src="./OperatingSystem.assets//image-20240625161145010.png" alt="image-20240625161145010" style="zoom:50%;" /></div>
 
      
 
@@ -4260,17 +4264,17 @@ $$
    - 页表长度寄存器
 
    - 快表：系统一组。页表太大时，慢。因此引入快表。将正在访问页面所对应的项目记录于快表中。访问页面时，先根据逻辑页号在快表中查找，找到，则根据页框号和页内地址形成物理地址；没找到，则由逻辑地址在页表中查找，并将找到的页框号与逻辑页号放在快表中。**快表是寄存器**
-     <div align = left><img src="OperatingSystem_imgs/image-20240625161319899.png" alt="image-20240625161319899" style="zoom:50%;" /></div>
+     <div align = left><img src="./OperatingSystem.assets//image-20240625161319899.png" alt="image-20240625161319899" style="zoom:50%;" /></div>
 
 6. **地址映射**：逻辑地址$(p,d)$:arrow_right:物理地址$(f,d)$   $\sigma: (p,d)\cup (f,d)\{\Omega\}$
 
 地址变换机构（页表）
 
-<div align = left><img src="OperatingSystem_imgs/image-20240625161746289.png" alt="image-20240625161746289" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240625161746289.png" alt="image-20240625161746289" style="zoom:50%;" /></div>
 
-<div align = left><img src="OperatingSystem_imgs/image-20240625161914638.png" alt="image-20240625161914638" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240625161914638.png" alt="image-20240625161914638" style="zoom:50%;" /></div>
 
-<div align = left><img src="OperatingSystem_imgs/image-20240625162034247.png" alt="image-20240625162034247" style="zoom:80%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240625162034247.png" alt="image-20240625162034247" style="zoom:80%;" /></div>
 
 7. **引入快表的地址映射**：逻辑地址$(p,d)$:arrow_right:物理地址$(f,d)$   $\sigma: (p,d)\rightarrow(f,d)\cup\{\Omega\}$
 
@@ -4291,7 +4295,7 @@ $$
 
 地址变换机构（快表）
 
-<div align = left><img src="OperatingSystem_imgs/image-20240625163305551.png" alt="image-20240625163305551" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240625163305551.png" alt="image-20240625163305551" style="zoom:50%;" /></div>
 
 内存访问：
 
@@ -4319,11 +4323,11 @@ $EAT = 98\%(20+100)+2\%(20+200) = 122(ns)$
 
  **过程**：利用外层页号（页面页表号），在外层页表中检索，从中找到下一级页表的起始地址，再利用内层页号找到指定的页表项，其中含有该页所在的块号，在和页内地址构成实际的内存物理地址。
 
-<div align = left><img src="OperatingSystem_imgs/image-20240625164646756.png" alt="image-20240625164646756" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240625164646756.png" alt="image-20240625164646756" style="zoom:50%;" /></div>
 
 二级页表：
 
-<div align = left><img src="OperatingSystem_imgs/image-20240625165529543.png" alt="image-20240625165529543" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240625165529543.png" alt="image-20240625165529543" style="zoom:50%;" /></div>
 
 例如对于四级页表，假定快表的命中率仍为98%，快表与内存的访问时间仍分别为20(ns)和100(ns)，有效访问时间为：
 
@@ -4334,7 +4338,7 @@ $EAT = 98\%(20+100)+2\%(20+(4+1)\times 100) = 128(ns)$
 传统页表面向进程空间，**即面向虚拟/逻辑空间*
 
 - 每个进程的逻辑页面有一表项
-- 当进程空间很大时**就是程序很大时*，页表很大
+- 当进程空间很大时 **就是程序很大时*，页表很大
 
 反置页表面向内存空间
 
@@ -4382,15 +4386,15 @@ $EAT = 98\%(20+100)+2\%(20+(4+1)\times 100) = 128(ns)$
 
 **内存空间划分**：动态异长，每区一段
 
-<div align = left><img src="OperatingSystem_imgs/image-20240625184458051.png" alt="image-20240625184458051" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240625184458051.png" alt="image-20240625184458051" style="zoom:50%;" /></div>
 
 **进程空间划分**：若干段，每段一个程序单位。
 
-<div align = left><img src="OperatingSystem_imgs/image-20240625184540117.png" alt="image-20240625184540117" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240625184540117.png" alt="image-20240625184540117" style="zoom:50%;" /></div>
 
 **分段系统的逻辑地址结构**
 
-<div align left><img src="OperatingSystem_imgs/image-20240625184746821.png" alt="image-20240625184746821" style="zoom:50%;" /></div>
+<div align left><img src="./OperatingSystem.assets//image-20240625184746821.png" alt="image-20240625184746821" style="zoom:50%;" /></div>
 
 该地址结构最多允许多少分段?每段最大长度为多少?
 该地址结构允许作业**最多**个段有2^(31-16+1)^=64K
@@ -4407,18 +4411,18 @@ $EAT = 98\%(20+100)+2\%(20+(4+1)\times 100) = 128(ns)$
 
 **对应关系**
 
-<div align = left><img src="OperatingSystem_imgs/image-20240625185048148.png" alt="image-20240625185048148" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240625185048148.png" alt="image-20240625185048148" style="zoom:50%;" /></div>
 
 **所需表目**:
 
 - 段表：**每进程一个，存放于内存，段表里是每一段首址，这点和页表不同，页表放的是页架号**
-  <div align = left><img src="OperatingSystem_imgs/image-20240625185158064.png" alt="image-20240625185158064" style="zoom:50%;" /></div>
+  <div align = left><img src="./OperatingSystem.assets//image-20240625185158064.png" alt="image-20240625185158064" style="zoom:50%;" /></div>
 
 - 空闲区域表：系统一个
 
 **段表的作用**：地址映射
 
-<div align = left><img src="OperatingSystem_imgs/image-20240625185349268.png" alt="image-20240625185349268" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240625185349268.png" alt="image-20240625185349268" style="zoom:50%;" /></div>
 
 **所需寄存器：**
 
@@ -4427,7 +4431,7 @@ $EAT = 98\%(20+100)+2\%(20+(4+1)\times 100) = 128(ns)$
 2. 段表长度寄存器：系统一个
 
 3. 快表：系统一组
-   <div align = left><img src="OperatingSystem_imgs/image-20240625185632129.png" alt="image-20240625185632129" style="zoom:50%;" /></div>
+   <div align = left><img src="./OperatingSystem.assets//image-20240625185632129.png" alt="image-20240625185632129" style="zoom:50%;" /></div>
 
 地址映射 $\sigma: (s,d)\rightarrow(b’+d)\cup\{\Omega\}$
 
@@ -4448,15 +4452,15 @@ $EAT = 98\%(20+100)+2\%(20+(4+1)\times 100) = 128(ns)$
 
 **地址变换机构(段表)**
 
-<div align = left><img src="OperatingSystem_imgs/image-20240625190930413.png" alt="image-20240625190930413" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240625190930413.png" alt="image-20240625190930413" style="zoom:50%;" /></div>
 
 **地址变换机构（快表）**
 
-<div align = left><img src="OperatingSystem_imgs/image-20240625191028086.png" alt="image-20240625191028086" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240625191028086.png" alt="image-20240625191028086" style="zoom:50%;" /></div>
 
 **地址变换机构（快表）**
 
-<div align = left><img src="OperatingSystem_imgs/image-20240625191254736.png" alt="image-20240625191254736" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240625191254736.png" alt="image-20240625191254736" style="zoom:50%;" /></div>
 
 **分段地址变换例**
 
@@ -4476,17 +4480,17 @@ $EAT = 98\%(20+100)+2\%(20+(4+1)\times 100) = 128(ns)$
 
 **分页系统中信息共享示意图**：
 
-<div align = left><img src="OperatingSystem_imgs/image-20240625191440349.png" alt="image-20240625191440349" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240625191440349.png" alt="image-20240625191440349" style="zoom:50%;" /></div>
 
 **分段系统中共享信息示意图**：
 
-<div align = left><img src="OperatingSystem_imgs/image-20240625191648243.png" alt="image-20240625191648243" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240625191648243.png" alt="image-20240625191648243" style="zoom:50%;" /></div>
 
-<div align = left><img src="OperatingSystem_imgs/image-20240625191605289.png" alt="image-20240625191605289" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240625191605289.png" alt="image-20240625191605289" style="zoom:50%;" /></div>
 
 **共享段表**：
 
-<div align = left><img src="OperatingSystem_imgs/image-20240625191746830.png" alt="image-20240625191746830" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240625191746830.png" alt="image-20240625191746830" style="zoom:50%;" /></div>
 
 #### 6.5.2.2 段的保护
 
@@ -4497,11 +4501,11 @@ $EAT = 98\%(20+100)+2\%(20+(4+1)\times 100) = 128(ns)$
 
 **段表的改进**：
 
-<div align = left><img src="OperatingSystem_imgs/image-20240625191855816.png" alt="image-20240625191855816" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240625191855816.png" alt="image-20240625191855816" style="zoom:50%;" /></div>
 
 **快表的改进**：
 
-<div align = left><img src="OperatingSystem_imgs/image-20240625191934058.png" alt="image-20240625191934058" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240625191934058.png" alt="image-20240625191934058" style="zoom:50%;" /></div>
 
 下面是分页管理与分段管理的区别特性表格：
 
@@ -4530,7 +4534,7 @@ $EAT = 98\%(20+100)+2\%(20+(4+1)\times 100) = 128(ns)$
 
 **内碎片**:是指**页面内部**没有被使用的存储区域,在页式存储方式中,会出现内碎片。 
 
-**外碎片**:是指没有得到分配权的存储区域,在段式存储方式中,会产生外碎片
+**外碎片**:是指**没有得到分配权**的存储区域,在段式存储方式中,会产生外碎片
 
 “内碎片”和“外碎片”是碎片的两种主要表现形式。
 **消除“内碎片”**需要将内存按程序需要的大小来分配；
@@ -4561,7 +4565,7 @@ $EAT = 98\%(20+100)+2\%(20+(4+1)\times 100) = 128(ns)$
 
 **对应关系**：
 
-<div align = left><img src="OperatingSystem_imgs/image-20240625194046419.png" alt="image-20240625194046419" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240625194046419.png" alt="image-20240625194046419" style="zoom:50%;" /></div>
 
 **所需表目**：
 
@@ -4594,7 +4598,7 @@ $EAT = 98\%(20+100)+2\%(20+(4+1)\times 100) = 128(ns)$
 
 **段页式系统中的地址变换机构（段表）**
 
-<div align = left><img src="OperatingSystem_imgs/image-20240625194737372.png" alt="image-20240625194737372" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240625194737372.png" alt="image-20240625194737372" style="zoom:50%;" /></div>
 
 在段页式系统中，要想存取访问信息，需要三次访问内存：
 
@@ -4606,11 +4610,11 @@ $EAT = 98\%(20+100)+2\%(20+(4+1)\times 100) = 128(ns)$
 
 **地址变换机构（快表）**
 
-<div align = left><img src="OperatingSystem_imgs/image-20240625194910571.png" alt="image-20240625194910571" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240625194910571.png" alt="image-20240625194910571" style="zoom:50%;" /></div>
 
 **地址变换机构（快表）**
 
-<div align = left><img src="OperatingSystem_imgs/image-20240625194942183.png" alt="image-20240625194942183" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240625194942183.png" alt="image-20240625194942183" style="zoom:50%;" /></div>
 
 # 第七章 虚拟存储系统
 
@@ -4620,7 +4624,7 @@ $EAT = 98\%(20+100)+2\%(20+(4+1)\times 100) = 128(ns)$
 
 逻辑上分为四部分：
 
-<div align = left><img src="OperatingSystem_imgs/image-20240625195115033.png" alt="image-20240625195115033" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240625195115033.png" alt="image-20240625195115033" style="zoom:50%;" /></div>
 
 这里只讲用于**实现虚拟存储的外存空间（交换空间）的管理**。
 
@@ -4713,7 +4717,7 @@ $EAT = 98\%(20+100)+2\%(20+(4+1)\times 100) = 128(ns)$
   3. 读入所需页面（切换进程，调度其他进程）；
   4. 重新启动进程，执行被中断的指令。
 
-<div align = left><img src="OperatingSystem_imgs/image-20240625201037812.png" alt="image-20240625201037812" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240625201037812.png" alt="image-20240625201037812" style="zoom:50%;" /></div>
 
 为实现虚拟页式存储管理，需要对页表和快表做改进
 
@@ -4726,11 +4730,11 @@ $EAT = 98\%(20+100)+2\%(20+(4+1)\times 100) = 128(ns)$
 
 **对页表的改进**：
 
-<div align = left><img src="OperatingSystem_imgs/image-20240625201314048.png" alt="image-20240625201314048" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240625201314048.png" alt="image-20240625201314048" style="zoom:50%;" /></div>
 
 **对快表的改进**：
 
-<div align = left><img src="OperatingSystem_imgs/image-20240625201358924.png" alt="image-20240625201358924" style="zoom:50%;" /></div>
+<div align = left><img src="./OperatingSystem.assets//image-20240625201358924.png" alt="image-20240625201358924" style="zoom:50%;" /></div>
 
 缺页中断机构
 在请求分页系统中，每当所要访问的页面不在内存时，便要产生一缺页中断，请求OS将所缺页调入内存。
@@ -4751,24 +4755,215 @@ $EAT = 98\%(20+100)+2\%(20+(4+1)\times 100) = 128(ns)$
 
 2. 按进程长度比例分配
 3. 按进程优先级比例分配
-
-高优先级没，分配较多；低优先级，分配较少。
+   高优先级没，分配较多；低优先级，分配较少。
 
 4. 按进程长度和优先级别比例分配
 
 静态策略的缺点，没有反映：
 
-(1)程序结构；不同进程的页面局部性是不同的
-
-(2)程序在不同时刻的行为特性。进程对页面而言是动态的。
+- 程序结构；不同进程的页面局部性是不同的
+- 程序在不同时刻的行为特性。进程对页面而言是动态的。
 
 ### 7.2.3 外存块分配策略
 
+进程的哪些部分怎样存放在外存？
+
+1. 静态分配
+   概念：一个进程在运行前，将**所有页面**全部装入外存。当一个外存页面被调入内存，所占用的外存页面不释放。
+   外存保持进程的全部页面：
+   - 优点：速度快--淘汰时不必写回(**未修改情况**)
+   - 缺点：外存浪费
+
+2. 动态分配
+   概念：一个进程运行前，仅将**没有装入内存的部分装入外存**，当某页面被调入内存时，释放所占用的外存空间。
+   外存仅保持进程不在内存的页面：
+   - 优点：节省外存
+   - 缺点：速度慢--淘汰时必须写回
+
 ### 7.2.4 页面调入时机
+
+1. 请调(demand paging)，请求调页策略
+   是指当进程在运行中发生缺页时，就立即提出请求，由系统将缺页调入内存。 
+   upon page fault, 发生缺页中断时调入。
+
+2. 预调(prepaging)，预调页策略
+   是一种主动的缺页调入策略，即将那些预计在不久的将来会被访问的程序或数据所在的页面，预先调入内存。
+   before page fault, 将要访问时调入(根据程序顺序行为，不一定准），即每次调入若干个页面
+
+预调必须辅以请调。
 
 ### 7.2.6 置换算法
 
+用于：页淘汰、段淘汰、快表淘汰。
+
+Objective: lowest page-fault rate.
+
+#### 7.2.6.1 最佳淘汰算法(OPT--optimal)
+
+原理：选择“未来不再使用的”或“在离当前最远位置上出现的”页面被置换。
+这是一种理想情况，是实际执行中无法预知的，因而不能实现。
+可用作性能评价的依据。即淘汰将来最长时间以后才用到的。
+
+效率最高，not feasible。
+
+<div align = left><img src="./OperatingSystem.assets//image-20240625222510813.png" alt="image-20240625222510813" style="zoom:50%;" /></div>
+
+假定系统为某进程分配了三个物理块， 并考虑有以下的页面号引用串：
+
+<div align = left><img src="./OperatingSystem.assets//image-20240625222603415.png" alt="image-20240625222603415" style="zoom:50%;" /></div>
+
+#### 7.2.6.2 先进先出(FIFO)
+
+实现：选择建立最早的页面被置换。可以通过链表来表示各页的建立时间先后。
+性能较差。较早调入的页往往是经常被访问的页，这些页在FIFO算法下被反复调入和调出。淘汰最先调入的。
+实现：队列
+依据: 先进入的可能已经使用完毕。
+negative case: 有些代码和数据可能整个程序运行中用到。
+
+例子：1，2，3，4，1，2，5，1，2，3，4，5
+内存3个物理页面：页故障率=9/12
+内存4个物理页面：页故障率=10/12
+
+Belady异常。
+
+<div align = left><img src="./OperatingSystem.assets//image-20240625223416263.png" alt="image-20240625223416263" style="zoom:50%;" /></div>
+
+- Belady现象：**采用FIFO算法时**，如果对一个进程未分配它所要求的全部页面，有时就会出现**分配的页面数增多，缺页率反而提高的异常现象**。
+- Belady现象的描述：一个进程P要访问M个页，OS分配N个内存页面给进程P；
+  对一个访问序列S，发生缺页次数为PE（S,N）。当N增大时，PE(S, N)时而增大，时而减小。
+- Belady现象的原因：FIFO算法的置换特征与进程访问内存的动态特征是矛盾的，**即被置换的页面并不是进程不会访问的。** 
+
+#### 7.2.6.3 最近最少使用算法（LRU）
+
+**叫最近最久未使用算法合适，最近最少使用算法不合适，因为最少使用并不是最久未使用，需要一个记录使用次数的计数器**
+
+原理：选择内存中最久未使用的页面被置换。这是局部性原理的合理近似，性能接近最佳算法。
+但由于需要记录页面使用时间的先后关系，硬件开销太大。**淘汰最近一次访问距当前时间最长的。**
+
+<div align = left><img src="./OperatingSystem.assets//image-20240625225327863.png" alt="image-20240625225327863" style="zoom:50%;" /></div>
+
+<div align = left><img src="./OperatingSystem.assets//image-20240625225442327.png" alt="image-20240625225442327" style="zoom:50%;" /></div>
+
+发生了9次面置换，缺页次数12次，缺页中断率为： $f=F/A=12/20=60\%$
+
+最近最少使用算法的两个实现方法：
+
+1. 计时法
+   系统为每个页面增设一个计时器，页面被访问时，当时的绝对时钟内容被复制到对应的计时器中，这样**系统记录了内存所有页面最后一次被访问的时候**，淘汰时，选取计时器中最小的页面淘汰。**就是用绝对时钟记录页面最后一次访问时间*
+2. 堆栈法
+   按照页面**最后一次访问的时间次序依次排列到堆栈中**。进程访问某一页时，其对应的页面号由栈内取出压入栈顶，因此，栈顶始终是最新被访问页面的页面号，栈底则是最近最久没有使用的页面号。**刚被访问的页面号放入栈顶**
+
+<div align = left><img src="./OperatingSystem.assets//image-20240625225716044.png" alt="image-20240625225716044" style="zoom:50%;" /></div>
+
+#### 7.2.6.4 最近不用的先淘汰(not used recently)
+
+**近似于LRU算法，不但希望淘汰最近未使用的页面**，还希望被挑选的页面在内存驻留期间，其页面内容没有给修改过，因此增加两个硬件位：访问位和修改位。0和1，0表示未访问或未修改。
+**淘汰最近一段时间未用到的。**
+实现：
+
+- 每页增加一个访问标志，
+- 访问置1，定时清0，
+- 淘汰时取标志为0的。
+
+由访问位A和修改位M可以组合成下面四种类型的页面：
+
+- 1类(A=0, M=0): 表示该页最近既未被访问， 又未被修改， **是最佳淘汰页**。
+- 2类(A=0, M=1)： 表示该页最近未被访问， 但已被修改， 并不是很好的淘汰页。**淘汰之前写回外存**
+- 3类(A=1, M=0)： 最近已被访问， 但未被修改， 该页有可能再被访问。**淘汰页**
+- 4类(A=1, M=1): 最近已被访问且被修改， 该页可能再被访问。 **淘汰之前写回外存**
+
+#### 7.2.6.5 最不经常使用的先淘汰(LFU)
+
+淘汰使用次数最少的。
+
+依据: actively used page should have a larger reference count.
+
+Suffer: 
+
+1. 前期使用多，但以后不用，难换出；
+2. 刚调入的页面，引用少，被换出可能大。
+
+实现：**记数器**，调入清0，访问增1，淘汰选取最小者
+
+#### 7.2.6.6 最经常使用的先淘汰(MFU)
+
+淘汰使用次数最多的。
+
+依据: 使用多的可能已经用完了。
+
+Suffer: 程序有些成分是在整个程序运行中都使用的。
+
+#### 7.2.6.7 二次机会算法(second chance)
+
+淘汰不但“**老**”而（最近）“**没用**”的页面
+
+原理：
+
+- 用链表来表示各页的建立时间先后，**新来的到表尾**，**表头就是最“老”的**（同FIFO）
+- 选择淘汰页面时，若表头页面的R位(访问位)是0，则淘汰之；
+  否则将其R位设为0，并把它放到表尾**说明被修改过**，然后继续从表头搜索（页面装入时置R=1）
+
+<div align = left><img src="./OperatingSystem.assets//image-20240625234323307.png" alt="image-20240625234323307" style="zoom:50%;" /></div>
+
+#### 7.2.6.8 时钟算法
+
+**环形链表实现的第二次机会算法**
+环形链表头尾相邻，因此只需要移动一个指针**非环形的是表头一个，表尾一个**。
+
+将页面组织成环形，有一个指针指向当前位置。
+每次需要淘汰页面时，从指针所指的页面开始检查。
+如果当前页面的访问位为0，即从上次检测到目前，该页没有访问过，则将该页替换。
+如果当前页面的访问位为1，则将其清0，并顺时针移动指针到下一个位置。
+重复上述步骤直至找到一个访问位为0的页面。**遇到1则清0，遇到0则淘汰**
+
+可以看出，时钟算法与二次机会算法的淘汰效果是基本相同的，**差别在于二者所采用的数据结构不同，二次机会使用的是链表**，需要额外存储空间，且摘链入链速度很慢。**而时钟算法可直接利用页表中的引用位，外加一个指针**，速度快且节省空间。
+
+<div align = left>
+    <img src="./OperatingSystem.assets//image-20240625234932239.png" alt="image-20240625234932239" style="zoom:50%;" />
+    <img src="./OperatingSystem.assets//image-20240625235040239.png" alt="image-20240625235040239" style="zoom:50%;" />
+</div>
+
+
+
+<div aligh = left>
+    <img src="./OperatingSystem.assets//image-20240625235124714.png" alt="image-20240625235124714" style="zoom:50%;" />
+    <img src="./OperatingSystem.assets//image-20240625235157264.png" alt="image-20240625235157264" style="zoom:50%;" />
+</div>
+
+将一个修改过的页面换出需要写磁盘，其开销大于未修改页面。
+为此在改进型时钟算法中应考虑页面修改情况。
+设R为访问位，M为修改位，将页面分为以下4种类型：
+
+- 1类(R=0,M=0)：未被访问又未被修改,最佳淘汰页面
+- 2类(R=0,M=1)：未被访问但已被修改,淘汰前回写
+- 3类(R=1, M=0)：已被访问但未被修改,不淘汰
+- 4类(R=1, M=1)：已被访问且已被修改,不淘汰
+
+步骤1：由指针当前位置开始扫描，选择最佳淘汰页面，不改变引用位，将第一个遇到的r=0且m=0的页面作为淘汰页面；
+
+步骤2：如步骤1失败，**再次从原位置开始**，找r=0且m=1的页面，将第一个满足上述要求的页面作为淘汰页面，同时将扫描过页面的r位清0；
+
+步骤3：若步骤2失败，指针再次回到原位置，重新执行步骤1。若还失败再次执行步骤2，此时定能找到。
+
+**缺页率对有效访问时间的影响**:
+
+有效访问时间是指访问存储器所需时间的平均值。
+假设使用了快表，则CPU访问内存时有以下三种情况：
+
+1. 页面在内存且页表项在快表中：只需一次访问内存
+2. 页面在内存但页表项不在快表中：需两次访问内存
+3. 页面不在内存：缺页中断时间
+
 ### 7.2.9 页故障率反馈类型
+
+PFFB(Page Fault Feed Back)
+
+页故障率高(达到某上界阈值)：内存页面少，增加。
+页故障率低(达到某下界阈值)：内存页面多，减少。
+
+<div align = left><img src="./OperatingSystem.assets//image-20240626000523052.png" alt="image-20240626000523052" style="zoom:50%;" /></div>
+
+
 
 ### 7.2.10 交换
 
@@ -4776,9 +4971,85 @@ $EAT = 98\%(20+100)+2\%(20+(4+1)\times 100) = 128(ns)$
 
 ## 7.3 虚拟段式存储管理
 
+进程运行前，全部装入外存，部分装入内存，访问段不再内存时，发生缺段中断。
+
 ### 7.3.1 基本原理
 
+<div align = left><img src="./OperatingSystem.assets//image-20240626000632158.png" alt="image-20240626000632158" style="zoom:50%;" /></div>
+
+<div align = left><img src="./OperatingSystem.assets/image-20240626001425829.png" alt="image-20240626001425829" style="zoom:50%;" /></div>
+
+**段表的改进**：
+
+<div align = left><img src="./OperatingSystem.assets/image-20240626001801064.png" alt="image-20240626001801064" style="zoom:50%;" /></div>
+
+**快表的改进**：
+
+<div align = left><img src="./OperatingSystem.assets/image-20240626001905233.png" alt="image-20240626001905233" style="zoom:50%;" /></div>
+
 ## 7.4 虚拟页段式存储管理
+
+**考虑**
+
+- **段的动态连接**
+- **段的共享**
+- **段长度的动态变化**
+- **结合虚拟段式和虚拟页式两者的特点，形成虚拟段页式**
+
+**所需表目：**
+
+1. **段表：每进程一个**
+   <div align = left><img src="./OperatingSystem.assets/image-20240626002144305.png" alt="image-20240626002144305" style="zoom:50%;" /></div>
+
+2. **页表：每段一个**
+
+   <div align = left><img src="./OperatingSystem.assets/image-20240626002220166.png" alt="image-20240626002220166" style="zoom:50%;" /></div>
+
+3. **共享段表：系统一个**
+   <div align = left><img src="./OperatingSystem.assets/image-20240626002458433.png" alt="image-20240626002458433" style="zoom:50%;" /></div>
+
+4. **段名-段号对照表：每进程一个**
+   对应关系：
+   <div align = left><img src="./OperatingSystem.assets/image-20240626002556118.png" alt="image-20240626002556118" style="zoom:50%;" /></div>
+
+   <div align = left><img src="./OperatingSystem.assets/image-20240626002632297.png" alt="image-20240626002632297" style="zoom:50%;" /></div>
+
+**所需寄存器：**
+
+1. **段表长度寄存器：保存正运行进程段表长度**
+
+2. **段表首址寄存器：保存正运行进程段表首址**
+
+3. **快表**
+   <div align = left><img src="./OperatingSystem.assets/image-20240626002730808.png" alt="image-20240626002730808" style="zoom:50%;" /></div>
+
+**地址映射：**
+
+$\sigma:(s,p,d)\rightarrow (f,d)\cup \{\Omega \}$
+
+逻辑地址$(s,p,d)$:arrow_right:物理地址$(f,d)$
+
+<div align = left><img src="./OperatingSystem.assets/image-20240626003014030.png" alt="image-20240626003014030" style="zoom:50%;" /></div>
+
+**中断处理：**
+
+1. **连接中断**
+   1. **所有进程均未连接(共享段表、段名-段号对照表均无)**
+      建立页表，由文件读入外存swap，部分页读入内存，分配段号，填段名-段号对照表，如是共享段填共享段表，填段表 ，形成逻辑地址。
+   2. **其它进程连接过，本进程未连接过(共享段表有，段名-段号对照表无)**
+      分配段号，填段名-段号对照表，填段表(指向共享段表)，共享记数加1,**形成逻辑地址。**
+   3. **本进程连接过(段名-段号对照表有，共享段表有或无)**
+      **形成逻辑地址。**
+   
+2. **缺页中断**
+   调入所需页面，更新页表和总页表。
+
+3. **越界中断**
+   1. **段号越界：错误处理。**
+   2. **页号越界：如可扩展，扩展该段(增加页)，修改页表和段表(页表长度);**如不可扩展，错误处理。
+
+4. **越权中断** 
+     **错误处理。**
 
 ### 7.4.1 基本原理
 
